@@ -1,0 +1,17 @@
+# Node
+node_modules/
+npm-debug.log*
+
+# Scripts temporários de build
+extract.js
+copy_used_images.js
+download_real.js
+download_cdn.js
+extracted_urls.json
+
+# Pasta images antigas (apenas images_site/ vai para o git)
+images/
+
+# OS
+.DS_Store
+Thumbs.db
