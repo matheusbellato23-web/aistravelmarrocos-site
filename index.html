@@ -35,14 +35,33 @@
       <div class="nav-actions">
         <!-- Language toggle — obvious split button -->
         <div class="lang-toggle" id="langToggle" aria-label="Idioma / Language">
-          <button id="btnPT" class="active" onclick="setLang('pt')">🇧🇷 PT</button>
-          <button id="btnEN" onclick="setLang('en')">🇬🇧 EN</button>
+          <button id="btnPT" class="active" onclick="setLang('pt')">&#127463;&#127479; PT</button>
+          <button id="btnEN" onclick="setLang('en')">&#127468;&#127463; EN</button>
         </div>
 
         <a href="#contato" class="btn-nav-cta" data-pt="Fazer Cotação" data-en="Get a Quote">Fazer Cotação</a>
+
+        <!-- Hamburger (mobile only) -->
+        <button class="nav-hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </div>
   </header>
+
+  <!-- MOBILE MENU DRAWER -->
+  <nav class="mobile-menu" id="mobileMenu">
+    <a href="#home" class="mob-link" data-pt="Início" data-en="Home">Início</a>
+    <a href="#sobre" class="mob-link" data-pt="Sobre" data-en="About">Sobre</a>
+    <a href="#dmc" class="mob-link" data-pt="DMC" data-en="DMC">DMC</a>
+    <a href="#destinos" class="mob-link" data-pt="Destinos" data-en="Destinations">Destinos</a>
+    <a href="#saara" class="mob-link" data-pt="Saara" data-en="Sahara">Saara</a>
+    <a href="#galeria" class="mob-link" data-pt="Galeria" data-en="Gallery">Galeria</a>
+    <a href="#contato" class="mob-link" data-pt="Contato" data-en="Contact">Contato</a>
+    <a href="#contato" class="mobile-menu-cta" data-pt="Fazer Cotação" data-en="Get a Quote">Fazer Cotação</a>
+  </nav>
 
   <!-- =================== HERO =================== -->
   <section class="hero" id="home">

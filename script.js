@@ -116,6 +116,32 @@ function initActiveNav() {
   sections.forEach(s => observer.observe(s));
 }
 
+// ── MOBILE HAMBURGER MENU ─────────────────────
+function initMobileMenu() {
+  const hamburger  = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (!hamburger || !mobileMenu) return;
+
+  function closeMobileMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  // Close on any nav link click
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMobileMenu);
+  });
+}
+
 // ── INIT ──────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   initSlider();
@@ -123,5 +149,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initWaFloat();
   initForm();
   initActiveNav();
+  initMobileMenu();
   setLang('pt'); // default language
 });
