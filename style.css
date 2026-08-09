@@ -659,7 +659,7 @@ a { text-decoration: none; }
 .dest-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 55%);
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 40%, transparent 85%);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -668,7 +668,7 @@ a { text-decoration: none; }
 }
 
 .dest-card:hover .dest-overlay {
-  background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.1) 55%);
+  background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.1) 90%);
 }
 
 .dest-tag {
@@ -815,33 +815,60 @@ a { text-decoration: none; }
 }
 
 /* =============================================
-   GALLERY — editorial grid
+   GALLERY — premium editorial layout
    ============================================= */
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, 220px);
-  gap: 8px;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 240px;
+  gap: 16px;
   margin-top: 40px;
 }
 
 .gallery-grid .g {
+  position: relative;
   overflow: hidden;
-  border-radius: 4px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
 }
 
-.gallery-grid .g:nth-child(1) { grid-column: span 2; grid-row: span 2; }
-.gallery-grid .g:nth-child(4) { grid-column: span 2; }
+.gallery-grid .g:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
 
 .gallery-grid .g img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s var(--ease);
+  transition: transform 0.6s var(--ease);
 }
 
 .gallery-grid .g:hover img {
-  transform: scale(1.04);
+  transform: scale(1.05);
+}
+
+/* Custom grid item spans for premium visual hierarchy */
+.gallery-grid .g:nth-child(1) { grid-column: span 6; grid-row: span 2; } /* Large portrait-oriented sand dune */
+.gallery-grid .g:nth-child(2) { grid-column: span 3; grid-row: span 1; } /* Casablanca Mosque */
+.gallery-grid .g:nth-child(3) { grid-column: span 3; grid-row: span 1; } /* Tea pouring */
+.gallery-grid .g:nth-child(4) { grid-column: span 6; grid-row: span 1; } /* Airport/Transfer runway */
+.gallery-grid .g:nth-child(5) { grid-column: span 3; grid-row: span 2; } /* Desert valley scene */
+.gallery-grid .g:nth-child(6) { grid-column: span 3; grid-row: span 2; } /* Riad courtyard */
+.gallery-grid .g:nth-child(7) { grid-column: span 6; grid-row: span 1; } /* Mosaic archway */
+
+/* Elegant caption overlays for gallery items */
+.gallery-grid .g::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.gallery-grid .g:hover::after {
+  opacity: 1;
 }
 
 /* =============================================
