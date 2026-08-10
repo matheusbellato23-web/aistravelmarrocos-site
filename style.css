@@ -145,16 +145,37 @@ a { text-decoration: none; }
 /* Logo */
 .brand-logo {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 10px;
   line-height: 1;
   flex-shrink: 0;
+  color: var(--black);
+}
+
+.logo-icon {
+  width: 28px;
+  height: 28px;
+  color: var(--red);
+}
+
+.footer .brand-logo {
+  color: var(--white);
+}
+
+.footer .logo-icon {
+  color: var(--red);
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
 }
 
 .logo-main {
   font-family: var(--serif);
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--black);
+  color: inherit;
   letter-spacing: 0.5px;
 }
 
