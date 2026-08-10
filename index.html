@@ -81,9 +81,16 @@
       font-weight: 700;
       font-size: 0.9rem;
       transition: background 0.2s;
+      cursor: pointer;
     }
     .btn-contact:hover {
       background: #A31822;
+    }
+    .btn-contact.disabled {
+      background: #555555;
+      color: #bbbbbb;
+      cursor: not-allowed;
+      opacity: 0.6;
     }
     .background-pattern {
       position: absolute;
@@ -114,12 +121,12 @@
     <h1>Estamos em manutenção</h1>
     <p>Preparando novidades exclusivas para sua próxima jornada pelo Reino de Marrocos. Voltamos em breve!</p>
     
-    <a href="https://wa.me/5511999001417?text=Olá! Gostaria de informações enquanto o site está em manutenção." class="btn-contact" target="_blank">
+    <span class="btn-contact disabled">
       Falar no WhatsApp Comercial 🇧🇷
-    </a>
+    </span>
     
     <div class="footer-info">
-      CNPJ & CADASTUR: 59.106.210/0001-01
+      CNPJ: 59.106.210/0001-01
     </div>
   </div>
 </body>
