@@ -12,7 +12,9 @@ extracted_urls.json
 # Pasta images antigas (apenas images_site/ vai para o git)
 images/
 
-# Archives
+# Archives & build
 *.rar
 *.zip
+dist/
+
 

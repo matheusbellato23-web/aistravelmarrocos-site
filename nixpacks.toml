@@ -1,4 +1,7 @@
-providers = ["staticfile"]
+providers = ["node", "staticfile"]
+
+[phases.build]
+cmds = ["npm run build"]
 
 [staticfile]
-staticAssetsDir = "."
+staticAssetsDir = "dist"
