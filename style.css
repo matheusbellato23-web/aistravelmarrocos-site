@@ -93,7 +93,23 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* ── SMOOTH SCROLL REVEAL ANIMATIONS ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
+  will-change: opacity, transform;
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 body {
   font-family: var(--sans);
@@ -213,11 +229,12 @@ a { text-decoration: none; }
 .lang-toggle {
   display: flex;
   align-items: center;
-  gap: 0;
+  gap: 2px;
   background: var(--gray-light);
   border-radius: 100px;
   padding: 3px;
   border: 1px solid var(--border);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.04);
 }
 
 .lang-toggle button {
@@ -226,20 +243,32 @@ a { text-decoration: none; }
   cursor: pointer;
   font-size: 0.72rem;
   font-weight: 700;
-  padding: 5px 11px;
+  padding: 5px 12px;
   border-radius: 100px;
   color: var(--gray-mid);
-  transition: all 0.2s;
+  transition: all 0.3s var(--ease);
   font-family: var(--sans);
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
+}
+
+.lang-toggle button .flag-svg {
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  transition: transform 0.3s var(--ease);
+}
+
+.lang-toggle button:hover .flag-svg {
+  transform: scale(1.1);
 }
 
 .lang-toggle button.active {
   background: var(--white);
   color: var(--black);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
 }
 
 /* CTA button in nav */
@@ -398,13 +427,107 @@ a { text-decoration: none; }
   background: rgba(255,255,255,0.35);
   border: none;
   cursor: pointer;
-  transition: background 0.3s, transform 0.3s;
+  transition: background 0.3s, width 0.3s, border-radius 0.3s;
 }
 
 .hero-dot.active {
-  background: var(--white);
-  transform: scale(1.4);
+  background: var(--red);
+  width: 22px;
+  border-radius: 4px;
 }
+
+/* Scroll indicator — elegant mouse capsule with animated red dot & chevron */
+.hero-scroll {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  opacity: 0.9;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.hero-scroll:hover {
+  opacity: 1;
+  transform: translateX(-50%) translateY(3px);
+}
+
+.hero-scroll-icon {
+  width: 22px;
+  height: 36px;
+  border: 1.8px solid rgba(255,255,255,0.4);
+  border-radius: 100px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding-top: 6px;
+  background: rgba(0,0,0,0.25);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.hero-scroll:hover .hero-scroll-icon {
+  border-color: var(--red);
+  box-shadow: 0 0 14px rgba(196, 30, 42, 0.45);
+}
+
+.hero-scroll-dot {
+  width: 4px;
+  height: 8px;
+  background: var(--red);
+  border-radius: 4px;
+  animation: scroll-dot 1.8s ease-in-out infinite;
+  box-shadow: 0 0 6px var(--red);
+}
+
+@keyframes scroll-dot {
+  0%   { transform: translateY(0); opacity: 1; }
+  60%  { transform: translateY(12px); opacity: 0.2; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.hero-scroll-label {
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+}
+
+.hero-scroll-chevron {
+  color: var(--red);
+  animation: scroll-chevron 1.8s ease-in-out infinite;
+}
+
+@keyframes scroll-chevron {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(4px); opacity: 1; }
+}
+
+/* Moroccan ornament divider */
+.moroccan-divider {
+  text-align: center;
+  line-height: 0;
+  margin: 0;
+  padding: 8px 0;
+  overflow: hidden;
+  color: var(--border);
+}
+
+.moroccan-divider svg {
+  height: 24px;
+  width: 100%;
+  max-width: 400px;
+  opacity: 0.35;
+}
+
+.moroccan-divider.light svg { opacity: 0.18; filter: invert(1); }
 
 /* =============================================
    CONTACT STRIP — Below hero, minimal
@@ -462,6 +585,9 @@ a { text-decoration: none; }
 .section-dark {
   background: var(--black);
   color: var(--white);
+  position: relative;
+  background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
 .section-muted {
@@ -474,12 +600,26 @@ a { text-decoration: none; }
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--red);
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   margin-bottom: 12px;
 }
 
+.section-label::before {
+  content: '◆';
+  font-size: 0.55rem;
+  color: var(--red);
+  opacity: 0.85;
+}
+
 .section-label.light {
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.6);
+}
+
+.section-label.light::before {
+  color: var(--red);
+  opacity: 1;
 }
 
 .section-title {
@@ -514,27 +654,30 @@ a { text-decoration: none; }
 
 .about-photos {
   position: relative;
-  height: 520px;
+  height: 560px;
 }
 
 .about-photo-main {
   position: absolute;
   top: 0; left: 0;
   width: 72%;
-  height: 80%;
+  height: 82%;
   object-fit: cover;
-  border-radius: 4px;
+  object-position: center center;
+  border-radius: 6px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.12);
 }
 
 .about-photo-accent {
   position: absolute;
   bottom: 0; right: 0;
-  width: 54%;
-  height: 54%;
+  width: 52%;
+  height: 52%;
   object-fit: cover;
-  border-radius: 4px;
-  border: 6px solid var(--white);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.14);
+  object-position: center top;
+  border-radius: 6px;
+  border: 5px solid var(--white);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.18);
 }
 
 .about-text {
@@ -634,14 +777,22 @@ a { text-decoration: none; }
 .dest-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 270px;
   gap: 20px;
 }
 
 .dest-card {
   position: relative;
-  border-radius: 6px;
+  border-radius: 10px;
   overflow: hidden;
   cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+
+.dest-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 44px rgba(0,0,0,0.18);
 }
 
 .dest-card:first-child {
@@ -651,15 +802,15 @@ a { text-decoration: none; }
 
 .dest-img {
   width: 100%;
-  height: 280px;
+  height: 100%;
   object-fit: cover;
+  object-position: center center;
   display: block;
-  transition: transform 0.6s var(--ease);
+  transition: transform 0.7s var(--ease);
 }
 
 .dest-card:first-child .dest-img {
-  height: 100%;
-  min-height: 480px;
+  object-position: center 30%;
 }
 
 .dest-card:hover .dest-img {
@@ -669,7 +820,7 @@ a { text-decoration: none; }
 .dest-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.2) 100%);
+  background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.25) 45%, transparent 75%);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -678,7 +829,7 @@ a { text-decoration: none; }
 }
 
 .dest-card:hover .dest-overlay {
-  background: linear-gradient(to top, rgba(0,0,0,0.98) 0%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0.3) 100%);
+  background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.4) 55%, rgba(0,0,0,0.1) 85%);
 }
 
 .dest-tag {
@@ -754,7 +905,8 @@ a { text-decoration: none; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  min-height: 540px;
+  object-position: center 40%;
+  min-height: 560px;
 }
 
 .sahara-content {
@@ -827,11 +979,14 @@ a { text-decoration: none; }
 /* =============================================
    GALLERY — premium editorial layout
    ============================================= */
+/* =============================================
+   GALLERY — Editorial 3-col bento grid
+   ============================================= */
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-auto-rows: 240px;
-  gap: 16px;
+  grid-auto-rows: 200px;
+  gap: 12px;
   margin-top: 40px;
 }
 
@@ -839,43 +994,52 @@ a { text-decoration: none; }
   position: relative;
   overflow: hidden;
   border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+  background: var(--gray-light);
 }
 
 .gallery-grid .g:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.16);
 }
 
 .gallery-grid .g img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s var(--ease);
+  transition: transform 0.7s var(--ease);
+  display: block;
 }
 
 .gallery-grid .g:hover img {
-  transform: scale(1.05);
+  transform: scale(1.06);
 }
 
-/* Custom grid item spans for premium visual hierarchy */
-.gallery-grid .g:nth-child(1) { grid-column: span 6; grid-row: span 2; } /* Large portrait-oriented sand dune */
-.gallery-grid .g:nth-child(2) { grid-column: span 3; grid-row: span 1; } /* Casablanca Mosque */
-.gallery-grid .g:nth-child(3) { grid-column: span 3; grid-row: span 1; } /* Tea pouring */
-.gallery-grid .g:nth-child(4) { grid-column: span 6; grid-row: span 1; } /* Airport/Transfer runway */
-.gallery-grid .g:nth-child(5) { grid-column: span 3; grid-row: span 2; } /* Desert valley scene */
-.gallery-grid .g:nth-child(6) { grid-column: span 3; grid-row: span 2; } /* Riad courtyard */
-.gallery-grid .g:nth-child(7) { grid-column: span 6; grid-row: span 1; } /* Mosaic archway */
+/* ── ROW 1: Dunas(wide) | Chefchaouen(tall) | Fez(tall) ── */
+.gallery-grid .g:nth-child(1) { grid-column: span 6; grid-row: span 2; } /* landscape — dunas pôr do sol */
+.gallery-grid .g:nth-child(2) { grid-column: span 3; grid-row: span 2; } /* portrait — viela azul */
+.gallery-grid .g:nth-child(3) { grid-column: span 3; grid-row: span 2; } /* portrait — madrasa fez */
 
-/* Elegant caption overlays for gallery items */
+/* ── ROW 2: Balões(wide) | Gruta(tall) | Essaouira porto(wide) ── */
+.gallery-grid .g:nth-child(4) { grid-column: span 5; grid-row: span 2; } /* landscape — balões */
+.gallery-grid .g:nth-child(5) { grid-column: span 3; grid-row: span 2; } /* portrait — gruta hércules */
+.gallery-grid .g:nth-child(6) { grid-column: span 4; grid-row: span 2; } /* landscape — porto essaouira */
+
+/* ── ROW 3: Jantar acampamento(tall) | Pôr do sol(wide) | Casablanca(tall) ── */
+.gallery-grid .g:nth-child(7) { grid-column: span 3; grid-row: span 2; } /* portrait — jantar berbere */
+.gallery-grid .g:nth-child(8) { grid-column: span 6; grid-row: span 2; } /* landscape — pôr do sol atlântico */
+.gallery-grid .g:nth-child(9) { grid-column: span 3; grid-row: span 2; } /* portrait — casablanca */
+
+/* Hover overlay shimmer */
 .gallery-grid .g::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 60%);
+  background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 55%);
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity 0.35s;
+  pointer-events: none;
 }
 .gallery-grid .g:hover::after {
   opacity: 1;
@@ -993,47 +1157,60 @@ a { text-decoration: none; }
 
 /* Form */
 .contact-form {
-  background: var(--gray-light);
-  border-radius: 6px;
-  padding: 36px;
+  background: #111111;
+  border-radius: 10px;
+  padding: 40px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  border: 1px solid var(--border);
+  gap: 18px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.22);
 }
 
 .form-heading {
   font-family: var(--serif);
-  font-size: 1.3rem;
-  color: var(--black);
+  font-size: 1.35rem;
+  color: var(--white);
   margin-bottom: 4px;
+  letter-spacing: -0.3px;
 }
 
 .f-group {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 6px;
 }
 
 .f-group label {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  color: var(--gray-dark);
-  letter-spacing: 0.5px;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .f-group input,
 .f-group select,
 .f-group textarea {
-  padding: 10px 14px;
-  border: 1px solid var(--border);
-  border-radius: 5px;
+  padding: 12px 16px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
   font-size: 0.875rem;
   font-family: var(--sans);
-  background: var(--white);
-  color: var(--black);
-  transition: border-color 0.2s;
+  background: rgba(255,255,255,0.05);
+  color: var(--white);
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
   width: 100%;
+}
+
+.f-group input::placeholder,
+.f-group textarea::placeholder {
+  color: rgba(255,255,255,0.25);
+}
+
+.f-group select option {
+  background: #1a1a1a;
+  color: var(--white);
 }
 
 .f-group input:focus,
@@ -1041,39 +1218,51 @@ a { text-decoration: none; }
 .f-group textarea:focus {
   outline: none;
   border-color: var(--red);
+  background: rgba(255,255,255,0.08);
+  box-shadow: 0 0 0 3px rgba(185,28,28,0.15);
 }
 
-.f-group textarea { resize: vertical; min-height: 110px; }
+.f-group textarea { resize: vertical; min-height: 115px; }
 
 .f-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 14px;
 }
 
 .btn-submit {
-  background: var(--black);
+  background: var(--red);
   color: var(--white);
-  padding: 13px 20px;
+  padding: 15px 20px;
   border: none;
-  border-radius: 5px;
-  font-size: 0.875rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
   font-weight: 700;
   cursor: pointer;
   font-family: var(--sans);
-  transition: background 0.2s;
+  letter-spacing: 0.5px;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
   width: 100%;
+  box-shadow: 0 4px 20px rgba(185,28,28,0.35);
 }
 
-.btn-submit:hover { background: var(--red); }
+.btn-submit:hover {
+  background: #a31c1c;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 30px rgba(185,28,28,0.45);
+}
+
+.btn-submit:active {
+  transform: translateY(0);
+}
 
 .form-success {
   display: none;
-  background: #EAF7ED;
-  border: 1px solid #8BC34A;
-  color: #2E7D32;
+  background: rgba(46,125,50,0.15);
+  border: 1px solid rgba(139,195,74,0.4);
+  color: #81c784;
   padding: 12px 16px;
-  border-radius: 5px;
+  border-radius: 6px;
   font-size: 0.85rem;
   font-weight: 600;
 }
@@ -1107,11 +1296,17 @@ a { text-decoration: none; }
 
 .cadastur-tag {
   margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cadastur-tag span {
   display: inline-block;
   font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 1.5px;
-  color: rgba(255,255,255,0.3);
+  letter-spacing: 1.2px;
+  color: rgba(255,255,255,0.35);
   text-transform: uppercase;
   border: 1px solid rgba(255,255,255,0.12);
   padding: 4px 10px;

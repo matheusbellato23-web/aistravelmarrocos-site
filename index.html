@@ -3,131 +3,611 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AIS Travel Marrocos — Em Manutenção</title>
+  <title>AIS Travel Marrocos — Receptivo Terrestre & DMC</title>
+  <meta name="description" content="Receptivo terrestre e DMC no Marrocos. Planejamento no Brasil, operação local no destino. Agências e grupos. CNPJ & CADASTUR: 59.106.210/0001-01" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --black: #0D0D0D;
-      --red: #C41E2A;
-      --gray-light: #F5F4F1;
-      --gray-mid: #888888;
-      --serif: 'Playfair Display', Georgia, serif;
-      --sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
-    }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: var(--sans);
-      background-color: var(--black);
-      color: #FFFFFF;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 24px;
-      overflow: hidden;
-    }
-    .maintenance-container {
-      max-width: 600px;
-      position: relative;
-      z-index: 2;
-    }
-    .brand-logo {
-      display: inline-flex;
-      flex-direction: column;
-      line-height: 1;
-      margin-bottom: 48px;
-    }
-    .logo-main {
-      font-family: var(--serif);
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: #FFFFFF;
-      letter-spacing: 0.5px;
-    }
-    .logo-sub {
-      font-size: 1rem;
-      font-weight: 800;
-      letter-spacing: 6px;
-      color: var(--red);
-      margin-top: 4px;
-      text-transform: uppercase;
-    }
-    h1 {
-      font-family: var(--serif);
-      font-size: clamp(2rem, 5vw, 3rem);
-      margin-bottom: 16px;
-      line-height: 1.2;
-    }
-    p {
-      font-size: 1.05rem;
-      color: var(--gray-mid);
-      margin-bottom: 40px;
-      line-height: 1.6;
-    }
-    .btn-contact {
-      display: inline-block;
-      background: var(--red);
-      color: #FFFFFF;
-      text-decoration: none;
-      padding: 14px 32px;
-      border-radius: 100px;
-      font-weight: 700;
-      font-size: 0.9rem;
-      transition: background 0.2s;
-      cursor: pointer;
-    }
-    .btn-contact:hover {
-      background: #A31822;
-    }
-    .btn-contact.disabled {
-      background: #555555;
-      color: #bbbbbb;
-      cursor: not-allowed;
-      opacity: 0.6;
-    }
-    .background-pattern {
-      position: absolute;
-      inset: 0;
-      background-image: url('images_site/hero_chefchaouen_blue_city.jpg');
-      background-size: cover;
-      background-position: center;
-      opacity: 0.15;
-      filter: grayscale(100%);
-      z-index: 1;
-    }
-    .footer-info {
-      margin-top: 48px;
-      font-size: 0.8rem;
-      color: rgba(255, 255, 255, 0.35);
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 </head>
 <body>
-  <div class="background-pattern"></div>
-  
-  <div class="maintenance-container">
-    <div class="brand-logo">
-      <span class="logo-main">AIS Travel</span>
-      <span class="logo-sub">Marrocos</span>
+
+  <!-- =================== NAVBAR =================== -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="#home" class="brand-logo">
+        <div class="logo-text">
+          <span class="logo-main">AIS Travel</span>
+          <span class="logo-sub">Marrocos</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#home" class="active" data-pt="Início" data-en="Home">Início</a></li>
+          <li><a href="#sobre" data-pt="Sobre" data-en="About">Sobre</a></li>
+          <li><a href="#dmc" data-pt="DMC" data-en="DMC">DMC</a></li>
+          <li><a href="#destinos" data-pt="Destinos" data-en="Destinations">Destinos</a></li>
+          <li><a href="#saara" data-pt="Saara" data-en="Sahara">Saara</a></li>
+          <li><a href="#galeria" data-pt="Galeria" data-en="Gallery">Galeria</a></li>
+          <li><a href="#contato" data-pt="Contato" data-en="Contact">Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="lang-toggle" id="langToggle" aria-label="Idioma / Language">
+          <button id="btnPT" class="active" onclick="setLang('pt')" aria-label="Português">
+            <svg class="flag-svg" viewBox="0 0 20 14" width="18" height="13" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="20" height="14" rx="2" fill="#009C3B"/>
+              <path d="M10 2L18.5 7L10 12L1.5 7L10 2Z" fill="#FFDF00"/>
+              <circle cx="10" cy="7" r="3.2" fill="#002776"/>
+              <path d="M7.2 6.5C8 6 11.5 6 12.8 7.5" stroke="#FFFFFF" stroke-width="0.7" stroke-linecap="round"/>
+            </svg>
+            <span>PT</span>
+          </button>
+          <button id="btnEN" onclick="setLang('en')" aria-label="English">
+            <svg class="flag-svg" viewBox="0 0 20 14" width="18" height="13" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="20" height="14" rx="2" fill="#012169"/>
+              <path d="M0 0L20 14M20 0L0 14" stroke="white" stroke-width="2.2"/>
+              <path d="M0 0L20 14M20 0L0 14" stroke="#C8102E" stroke-width="1.2"/>
+              <path d="M10 0V14M0 7H20" stroke="white" stroke-width="3.5"/>
+              <path d="M10 0V14M0 7H20" stroke="#C8102E" stroke-width="2"/>
+            </svg>
+            <span>EN</span>
+          </button>
+        </div>
+
+        <a href="#contato" class="btn-nav-cta" data-pt="Fazer Cotação" data-en="Get a Quote">Fazer Cotação</a>
+
+        <!-- Hamburger (mobile only) -->
+        <button class="nav-hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </div>
-    
-    <h1>Estamos em manutenção</h1>
-    <p>Preparando novidades exclusivas para sua próxima jornada pelo Reino de Marrocos. Voltamos em breve!</p>
-    
-    <span class="btn-contact disabled">
-      Falar no WhatsApp Comercial 🇧🇷
-    </span>
-    
-    <div class="footer-info">
-      CNPJ: 59.106.210/0001-01
+  </header>
+
+  <!-- MOBILE MENU DRAWER -->
+  <nav class="mobile-menu" id="mobileMenu">
+    <a href="#home" class="mob-link" data-pt="Início" data-en="Home">Início</a>
+    <a href="#sobre" class="mob-link" data-pt="Sobre" data-en="About">Sobre</a>
+    <a href="#dmc" class="mob-link" data-pt="DMC" data-en="DMC">DMC</a>
+    <a href="#destinos" class="mob-link" data-pt="Destinos" data-en="Destinations">Destinos</a>
+    <a href="#saara" class="mob-link" data-pt="Saara" data-en="Sahara">Saara</a>
+    <a href="#galeria" class="mob-link" data-pt="Galeria" data-en="Gallery">Galeria</a>
+    <a href="#contato" class="mob-link" data-pt="Contato" data-en="Contact">Contato</a>
+    <a href="#contato" class="mobile-menu-cta" data-pt="Fazer Cotação" data-en="Get a Quote">Fazer Cotação</a>
+  </nav>
+
+  <!-- =================== HERO =================== -->
+  <section class="hero" id="home">
+    <div class="hero-slides" id="heroSlides">
+      <div class="hero-slide active" style="background-image: url('images_site/hero_chefchaouen_blue_city.jpg'); background-position: center 60%;"></div>
+      <div class="hero-slide" style="background-image: url('images_site/hero_sahara_desert_dunes.jpg'); background-position: center 50%;"></div>
+      <div class="hero-slide" style="background-image: url('images_site/hero_casablanca_mosque.jpg'); background-position: center center;"></div>
+      <div class="hero-slide" style="background-image: url('images_site/hero_chefchaouen_streets.jpg'); background-position: center 50%;"></div>
+    </div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow" data-pt="Receptivo Terrestre & DMC no Marrocos" data-en="Ground Receptive & DMC in Morocco">Receptivo Terrestre & DMC no Marrocos</p>
+
+      <h1 class="hero-title" data-pt="Sua experiência autêntica no Norte da África" data-en="Your authentic experience in North Africa">
+        Sua experiência autêntica no Norte da África
+      </h1>
+
+      <p class="hero-subtitle" data-pt="Planejamento próximo no Brasil. Operação local e pessoal no Marrocos." data-en="Close planning in Brazil. Local and personal operation in Morocco.">
+        Planejamento próximo no Brasil. Operação local e pessoal no Marrocos.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#destinos" class="btn-primary" data-pt="Ver Destinos" data-en="Explore Destinations">
+          Ver Destinos &rarr;
+        </a>
+        <a href="https://wa.me/5511999001417?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20atendimento." target="_blank" class="btn-ghost" data-pt="WhatsApp Brasil" data-en="WhatsApp Brazil">
+          WhatsApp Brasil 🇧🇷
+        </a>
+      </div>
+    </div>
+
+    <!-- Slide indicator dots -->
+    <div class="hero-dots" id="heroDots">
+      <button class="hero-dot active" data-idx="0"></button>
+      <button class="hero-dot" data-idx="1"></button>
+      <button class="hero-dot" data-idx="2"></button>
+      <button class="hero-dot" data-idx="3"></button>
+    </div>
+    <!-- Scroll indicator -->
+    <a href="#sobre" class="hero-scroll" aria-label="Rolar para baixo">
+      <span class="hero-scroll-icon">
+        <span class="hero-scroll-dot"></span>
+      </span>
+      <span class="hero-scroll-label" data-pt="Descubra" data-en="Explore">Descubra</span>
+      <svg class="hero-scroll-chevron" width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </section>
+
+  <!-- Moroccan Divider -->
+  <div class="moroccan-divider">
+    <svg viewBox="0 0 400 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line x1="0" y1="12" x2="155" y2="12" stroke="currentColor" stroke-width="0.8"/>
+      <path d="M175 12 L182 4 L189 12 L182 20 Z" stroke="currentColor" stroke-width="0.8" fill="none"/>
+      <circle cx="200" cy="12" r="3" stroke="currentColor" stroke-width="0.8" fill="none"/>
+      <path d="M211 12 L218 4 L225 12 L218 20 Z" stroke="currentColor" stroke-width="0.8" fill="none"/>
+      <line x1="245" y1="12" x2="400" y2="12" stroke="currentColor" stroke-width="0.8"/>
+    </svg>
+  </div>
+
+  <!-- =================== CONTACT STRIP =================== -->
+  <div class="contact-strip">
+    <a href="https://wa.me/5511999001417?text=Ol%C3%A1!%20Vim%20pelo%20site." target="_blank" class="contact-strip-link">
+      <span class="strip-flag">🇧🇷</span>
+      <div>
+        <span class="strip-label" data-pt="Atendimento Brasil" data-en="Brazil Office">Atendimento Brasil</span>
+        <span class="strip-number">+55 11 99900-1417</span>
+      </div>
+    </a>
+    <a href="https://wa.me/212694011080?text=Ol%C3%A1!%20Vim%20pelo%20site." target="_blank" class="contact-strip-link">
+      <span class="strip-flag">🇲🇦</span>
+      <div>
+        <span class="strip-label" data-pt="Operação Marrocos" data-en="Morocco Office">Operação Marrocos</span>
+        <span class="strip-number">+212 694-011080</span>
+      </div>
+    </a>
+    <div class="contact-strip-link" style="cursor:default;">
+      <span class="strip-flag">✉️</span>
+      <div>
+        <span class="strip-label">E-mail</span>
+        <span class="strip-number">aistravelmarrocos@gmail.com</span>
+      </div>
     </div>
   </div>
+
+  <!-- =================== SOBRE =================== -->
+  <section class="section" id="sobre">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-photos">
+          <img src="images_site/about_morocco_operation.jpg" alt="Operação AIS no Marrocos" class="about-photo-main" />
+          <img src="images_site/about_fes_medina.jpg" alt="Medina de Fez" class="about-photo-accent" />
+        </div>
+
+        <div class="about-text">
+          <div>
+            <span class="section-label" data-pt="Sobre a AIS Travel Marrocos" data-en="About AIS Travel Morocco">Sobre a AIS Travel Marrocos</span>
+            <h2 class="section-title" data-pt="Conexão direta com a experiência real do destino" data-en="Direct connection to the authentic destination experience">Conexão direta com a experiência real do destino</h2>
+          </div>
+
+          <p data-pt="A AIS Travel Marrocos é uma empresa brasileira especializada em receptivo terrestre e operação DMC no Marrocos. Com atendimento no Brasil e equipe local no destino, organizamos viagens personalizadas que valorizam a cultura, o povo e a história milenar do país." data-en="AIS Travel Morocco is a Brazilian company specializing in ground reception and DMC operation in Morocco. With service in Brazil and a local team on the ground, we organize personalized trips that celebrate the culture and history of the country.">
+            A AIS Travel Marrocos é uma empresa brasileira especializada em receptivo terrestre e operação DMC no Marrocos. Com atendimento no Brasil e equipe local no destino, organizamos viagens personalizadas que valorizam a cultura, o povo e a história milenar do país.
+          </p>
+
+          <p data-pt="Como DMC (Destination Management Company), coordenamos toda a operação terrestre — transfers, guias, hospedagem, excursões e suporte 24h para grupos e passageiros em trânsito." data-en="As a DMC, we coordinate the full ground operation — transfers, guides, accommodation, excursions and 24/7 support for groups and travelers in transit.">
+            Como DMC (Destination Management Company), coordenamos toda a operação terrestre — transfers, guias, hospedagem, excursões e suporte 24h para grupos e passageiros em trânsito.
+          </p>
+
+          <div class="about-badges">
+            <div class="badge-item">
+              <strong>DMC</strong>
+              <span data-pt="Operação local completa" data-en="Full local operation">Operação local completa</span>
+            </div>
+            <div class="badge-item">
+              <strong>CNPJ</strong>
+              <span>59.106.210/0001-01</span>
+            </div>
+            <div class="badge-item">
+              <strong>B2B</strong>
+              <span data-pt="Parceira de Agências" data-en="Agency Partner">Parceira de Agências</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== DMC =================== -->
+  <section class="section section-dark" id="dmc">
+    <div class="container">
+      <div class="sh sh-center">
+        <span class="section-label light" data-pt="Nossa Atuação" data-en="Our Role">Nossa Atuação</span>
+        <h2 class="section-title light" data-pt="O que fazemos como DMC no Marrocos" data-en="What we do as a DMC in Morocco">O que fazemos como DMC no Marrocos</h2>
+        <p class="section-body light" data-pt="DMC significa gestão completa da viagem no destino — do planejamento à execução, com equipe local." data-en="DMC means complete destination management — from planning to execution, with a local team.">
+          DMC significa gestão completa da viagem no destino — do planejamento à execução, com equipe local.
+        </p>
+      </div>
+
+      <div class="dmc-grid">
+        <div class="dmc-card">
+          <div class="dmc-num">01</div>
+          <h3 data-pt="Atendimento Binacional" data-en="Bilingual Support">Atendimento Binacional</h3>
+          <p data-pt="Suporte comercial e planejamento no Brasil. Operação e execução no Marrocos com equipe local." data-en="Commercial support and planning in Brazil. Operation and execution in Morocco with a local team.">
+            Suporte comercial e planejamento no Brasil. Operação e execução no Marrocos com equipe local.
+          </p>
+        </div>
+        <div class="dmc-card">
+          <div class="dmc-num">02</div>
+          <h3 data-pt="Conhecimento Local" data-en="Local Expertise">Conhecimento Local</h3>
+          <p data-pt="Guias credenciados, motoristas experientes e fornecedores selecionados no destino." data-en="Accredited guides, experienced drivers and selected suppliers on the ground.">
+            Guias credenciados, motoristas experientes e fornecedores selecionados no destino.
+          </p>
+        </div>
+        <div class="dmc-card">
+          <div class="dmc-num">03</div>
+          <h3 data-pt="Roteiros Personalizados" data-en="Tailored Itineraries">Roteiros Personalizados</h3>
+          <p data-pt="Planejamento adaptado ao perfil e interesses de cada passageiro, grupo ou agência parceira." data-en="Planning adapted to the profile and interests of each traveler, group or partner agency.">
+            Planejamento adaptado ao perfil e interesses de cada passageiro, grupo ou agência parceira.
+          </p>
+        </div>
+        <div class="dmc-card">
+          <div class="dmc-num">04</div>
+          <h3 data-pt="Suporte 24 Horas" data-en="24/7 Support">Suporte 24 Horas</h3>
+          <p data-pt="Acompanhamento contínuo antes e durante toda a viagem, incluindo imprevistos e emergências." data-en="Continuous monitoring before and throughout the trip, including unforeseen events.">
+            Acompanhamento contínuo antes e durante toda a viagem, incluindo imprevistos e emergências.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== DESTINOS =================== -->
+  <section class="section" id="destinos">
+    <div class="container">
+      <div class="destinations-intro">
+        <div>
+          <span class="section-label" data-pt="Cidades & Circuitos" data-en="Cities & Circuits">Cidades & Circuitos</span>
+          <h2 class="section-title" data-pt="Destinos do Marrocos" data-en="Morocco Destinations">Destinos do Marrocos</h2>
+        </div>
+        <p class="section-body" data-pt="Cidades imperiais, montanhas e deserto. Cada destino tem uma história única." data-en="Imperial cities, mountains and desert. Each destination has a unique history.">
+          Cidades imperiais, montanhas e deserto. Cada destino tem uma história única.
+        </p>
+      </div>
+
+      <div class="dest-grid">
+
+        <!-- CHEFCHAOUEN — destaque maior -->
+        <div class="dest-card">
+          <img src="images_site/dest_chefchaouen.jpg" alt="Chefchaouen" class="dest-img" style="object-position: center 20%;" />
+          <div class="dest-overlay">
+            <p class="dest-tag">Cidade Azul</p>
+            <h3 class="dest-name">Chefchaouen</h3>
+            <p class="dest-desc" data-pt="Famosa por suas ruas e construções em tons de azul, artesanato de couro e tecido, e um cenário montanhoso deslumbrante." data-en="Famous for its blue-hued streets and buildings, leather and textile crafts, and stunning mountain scenery.">
+              Famosa por suas ruas e construções em tons de azul, artesanato de couro e tecido, e um cenário montanhoso deslumbrante.
+            </p>
+            <a href="#contato" class="dest-cta" data-pt="Solicitar roteiro →" data-en="Request itinerary →">Solicitar roteiro →</a>
+          </div>
+        </div>
+
+        <!-- CASABLANCA -->
+        <div class="dest-card">
+          <img src="images_site/dest_casablanca.jpg" alt="Casablanca" class="dest-img" style="object-position: center center;" />
+          <div class="dest-overlay">
+            <p class="dest-tag">Norte</p>
+            <h3 class="dest-name">Casablanca</h3>
+            <p class="dest-desc" data-pt="Mesquita Hassan II, medina histórica e a efervescência de uma metrópole moderna africana." data-en="Hassan II Mosque, historic medina and the buzz of a modern African metropolis.">
+              Mesquita Hassan II, medina histórica e a efervescência de uma metrópole moderna africana.
+            </p>
+            <a href="#contato" class="dest-cta" data-pt="Solicitar roteiro →" data-en="Request itinerary →">Solicitar roteiro →</a>
+          </div>
+        </div>
+
+        <!-- FEZ (FEZ com Z) -->
+        <div class="dest-card">
+          <img src="images_site/dest_fez_medina.jpg" alt="Fez" class="dest-img" style="object-position: center 40%;" />
+          <div class="dest-overlay">
+            <p class="dest-tag">Patrimônio UNESCO</p>
+            <h3 class="dest-name">Fez</h3>
+            <p class="dest-desc" data-pt="Curtumes Chouara do século XI, cerâmica azul e a universidade mais antiga do mundo." data-en="11th-century Chouara Tannery, blue ceramics and the world's oldest university.">
+              Curtumes Chouara do século XI, cerâmica azul e a universidade mais antiga do mundo.
+            </p>
+            <a href="#contato" class="dest-cta" data-pt="Solicitar roteiro →" data-en="Request itinerary →">Solicitar roteiro →</a>
+          </div>
+        </div>
+
+        <!-- RABAT -->
+        <div class="dest-card">
+          <img src="images_site/dest_rabat_capital.jpg" alt="Rabat" class="dest-img" />
+          <div class="dest-overlay">
+            <p class="dest-tag">Capital 🇲🇦</p>
+            <h3 class="dest-name">Rabat</h3>
+            <p class="dest-desc" data-pt="Torre Hassan, Necrópole de Chellah e a elegância de uma capital com raízes medievais." data-en="Hassan Tower, Chellah Necropolis and the elegance of a capital with medieval roots.">
+              Torre Hassan, Necrópole de Chellah e a elegância de uma capital com raízes medievais.
+            </p>
+            <a href="#contato" class="dest-cta" data-pt="Solicitar roteiro →" data-en="Request itinerary →">Solicitar roteiro →</a>
+          </div>
+        </div>
+
+        <!-- ESSAOUIRA -->
+        <div class="dest-card">
+          <img src="images_site/dest_essaouira.jpg" alt="Essaouira" class="dest-img" />
+          <div class="dest-overlay">
+            <p class="dest-tag">Litoral Atlântico</p>
+            <h3 class="dest-name">Essaouira</h3>
+            <p class="dest-desc" data-pt="A charmosa cidade litorânea marroquina com suas muralhas históricas, porto tradicional e brisa do Oceano Atlântico." data-en="The charming coastal Moroccan city with its historic ramparts, traditional port, and Atlantic Ocean breeze.">
+              A charmosa cidade litorânea marroquina com suas muralhas históricas, porto tradicional e brisa do Oceano Atlântico.
+            </p>
+            <a href="#contato" class="dest-cta" data-pt="Solicitar roteiro →" data-en="Request itinerary →">Solicitar roteiro →</a>
+          </div>
+        </div>
+
+        <!-- TÂNGER (Independente) -->
+        <div class="dest-card">
+          <img src="images_site/dest_tanger_mediterranean.jpg" alt="Tânger" class="dest-img" />
+          <div class="dest-overlay">
+            <p class="dest-tag">Porta da Europa</p>
+            <h3 class="dest-name">Tânger</h3>
+            <p class="dest-desc" data-pt="O fascinante encontro entre o Oceano Atlântico e o Mar Mediterrâneo, uma cidade mística e portuária repleta de história internacional." data-en="The fascinating meeting point of the Atlantic Ocean and the Mediterranean Sea, a mystical port city filled with international history.">
+              O fascinante encontro entre o Oceano Atlântico e o Mar Mediterrâneo, uma cidade mística e portuária repleta de história internacional.
+            </p>
+            <a href="#contato" class="dest-cta" data-pt="Solicitar roteiro →" data-en="Request itinerary →">Solicitar roteiro →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== SAARA =================== -->
+  <section id="saara">
+    <div class="sahara-section">
+      <div class="sahara-photo">
+        <img src="images_site/saara_featured.jpg" alt="Deserto Saara Merzouga" style="object-position: center 40%;" />
+      </div>
+      <div class="sahara-content">
+        <span class="section-label light" data-pt="Excursões & Aventura" data-en="Excursions & Adventure">Excursões & Aventura</span>
+        <h2 class="section-title light" data-pt="Saara de Merzouga — Erg Chebbi" data-en="Merzouga Sahara — Erg Chebbi">Saara de Merzouga — Erg Chebbi</h2>
+        <p data-pt="A experiência mais épica do Marrocos. Dunas de até 150 metros, pôr do sol sobre o deserto e uma noite inesquecível em acampamento berbere." data-en="Morocco's most epic experience. Dunes up to 150 meters high, sunset over the desert and an unforgettable night at a Berber camp.">
+          A experiência mais épica do Marrocos. Dunas de até 150 metros, pôr do sol sobre o deserto e uma noite inesquecível em acampamento berbere.
+        </p>
+
+        <div class="feature-list">
+          <div class="feature-item">
+            <span class="feature-dot"></span>
+            <span data-pt="Passeio de dromedário ao pôr do sol nas dunas douradas" data-en="Dromedary ride at sunset on the golden dunes">Passeio de dromedário ao pôr do sol nas dunas douradas</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-dot"></span>
+            <span data-pt="Acampamento berbere com jantar típico e música local" data-en="Berber camp with traditional dinner and local music">Acampamento berbere com jantar típico e música local</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-dot"></span>
+            <span data-pt="Excursão de 4x4 pelo deserto com motoristas credenciados" data-en="4x4 excursion through the desert with accredited drivers">Excursão de 4x4 pelo deserto com motoristas credenciados</span>
+          </div>
+        </div>
+
+        <a href="#contato" class="btn-primary" data-pt="Solicitar Esta Experiência" data-en="Request This Experience">Solicitar Esta Experiência &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== TRANSFERS =================== -->
+  <section class="section section-muted" id="transfers">
+    <div class="container">
+      <div class="transfers-grid">
+        <video class="transfer-img" autoplay muted loop playsinline>
+          <source src="images_site/transfer_cars_desert.mp4" type="video/mp4" />
+          Seu navegador não suporta vídeos.
+        </video>
+
+        <div class="transfer-text">
+          <div>
+            <span class="section-label" data-pt="Transfers Aeroportuários" data-en="Airport Transfers">Transfers Aeroportuários</span>
+            <h2 class="section-title" data-pt="Chegada segura e pontual" data-en="Safe and punctual arrival">Chegada segura e pontual</h2>
+          </div>
+          <p data-pt="Transfers privados com motoristas profissionais em todos os aeroportos do Marrocos: Casablanca, Marrakech, Fez, Agadir, Tânger e demais. Veículos modernos e atendimento com placa nominal." data-en="Private transfers with professional drivers at all Moroccan airports: Casablanca, Marrakech, Fez, Agadir, Tangier and more. Modern vehicles and name-sign welcome.">
+            Transfers privados com motoristas profissionais em todos os aeroportos do Marrocos: Casablanca, Marrakech, Fez, Agadir, Tânger e demais. Veículos modernos e atendimento com placa nominal.
+          </p>
+          <div class="transfer-features">
+            <div class="tf-row">
+              <span>🛬</span>
+              <span data-pt="Recepção nominal no desembarque" data-en="Name-sign reception on arrival">Recepção nominal no desembarque</span>
+            </div>
+            <div class="tf-row">
+              <span>🕐</span>
+              <span data-pt="Monitoramento de voo em tempo real" data-en="Real-time flight monitoring">Monitoramento de voo em tempo real</span>
+            </div>
+            <div class="tf-row">
+              <span>🚗</span>
+              <span data-pt="Veículos climatizados e modernos" data-en="Air-conditioned, modern vehicles">Veículos climatizados e modernos</span>
+            </div>
+          </div>
+          <a href="#contato" class="btn-primary" data-pt="Solicitar Transfer" data-en="Request Transfer">Solicitar Transfer &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== B2B =================== -->
+  <section class="section" id="b2b">
+    <div class="container">
+      <div class="b2b-block">
+        <div class="b2b-text">
+          <span class="section-label light" data-pt="Para Agências & Operadoras" data-en="For Travel Agencies">Para Agências & Operadoras</span>
+          <h2 data-pt="Parceria B2B: Seu operador no Marrocos" data-en="B2B Partnership: Your Morocco operator">Parceria B2B: Seu operador no Marrocos</h2>
+          <p data-pt="Oferecemos suporte estratégico em português no Brasil e execução impecável no Marrocos. Cotações rápidas, operação confiável e atendimento dedicado para agências e operadoras." data-en="We offer strategic support in Portuguese in Brazil and flawless execution in Morocco. Fast quotes, reliable operation and dedicated service for agencies and operators.">
+            Oferecemos suporte estratégico em português no Brasil e execução impecável no Marrocos. Cotações rápidas, operação confiável e atendimento dedicado para agências e operadoras.
+          </p>
+        </div>
+        <a href="https://wa.me/5511999001417?text=Ol%C3%A1!%20Sou%20de%20uma%20ag%C3%AAncia%20e%20gostaria%20de%20parceria%20B2B." target="_blank" class="btn-primary" data-pt="Falar com Comercial B2B" data-en="Talk to B2B Sales">Falar com Comercial &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== GALERIA =================== -->
+  <section class="section" id="galeria">
+    <div class="container">
+      <div class="sh sh-center">
+        <span class="section-label" data-pt="Galeria da Operação" data-en="Operation Gallery">Galeria da Operação</span>
+        <h2 class="section-title" data-pt="Marrocos em imagens reais" data-en="Morocco in real images">Marrocos em imagens reais</h2>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="g g-landscape"><img src="images_site/gal_01_desert_sunset.jpg" alt="Dunas do Saara ao pôr do sol" style="object-position: center 60%;" /></div>
+        <div class="g g-portrait"><img src="images_site/gal_07_chefchaouen_alley.jpg" alt="Viela azul — Chefchaouen" style="object-position: center 30%;" /></div>
+        <div class="g g-portrait"><img src="images_site/gal_03_fez_madrasa.jpg" alt="Madrasa Bou Inania — Fez" style="object-position: center 20%;" /></div>
+        <div class="g g-landscape"><img src="images_site/gal_04_balloon_dawn.jpg" alt="Balões ao amanhecer — Marrocos" style="object-position: center 40%;" /></div>
+        <div class="g g-portrait"><img src="images_site/gal_02_tanger_cave.jpg" alt="Gruta de Hércules — Tânger" style="object-position: center center;" /></div>
+        <div class="g g-landscape"><img src="images_site/gal_05_essaouira_port.jpg" alt="Porto de Essaouira" style="object-position: center 50%;" /></div>
+        <div class="g g-portrait"><img src="images_site/gal_08_desert_dinner.jpg" alt="Jantar no acampamento berbere" style="object-position: center 40%;" /></div>
+        <div class="g g-landscape"><img src="images_site/gal_06_essaouira_sunset.jpg" alt="Pôr do sol Atlântico — Essaouira" style="object-position: center 50%;" /></div>
+        <div class="g g-portrait"><img src="images_site/gal_09_casablanca_arch.jpg" alt="Arquitetura histórica — Casablanca" style="object-position: center 30%;" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== CONTATO =================== -->
+  <section class="section section-muted" id="contato">
+    <div class="container">
+      <div class="contact-grid">
+
+        <div class="contact-info">
+          <span class="section-label" data-pt="Fale Conosco" data-en="Get In Touch">Fale Conosco</span>
+          <h2 data-pt="Planeje sua viagem ao Marrocos" data-en="Plan your trip to Morocco">Planeje sua viagem ao Marrocos</h2>
+          <p data-pt="Entre em contato pelo WhatsApp ou pelo formulário. Respondemos em até 24 horas úteis." data-en="Reach out via WhatsApp or the form. We respond within 24 business hours.">
+            Entre em contato pelo WhatsApp ou pelo formulário. Respondemos em até 24 horas úteis.
+          </p>
+
+          <div class="wa-buttons">
+            <a href="https://wa.me/5511999001417?text=Ol%C3%A1!%20Vim%20pelo%20site." target="_blank" class="wa-btn">
+              <span class="wa-flag">🇧🇷</span>
+              <div>
+                <strong data-pt="WhatsApp Brasil" data-en="Brazil WhatsApp">WhatsApp Brasil</strong>
+                <small>+55 11 99900-1417 — Atendimento comercial</small>
+              </div>
+            </a>
+            <a href="https://wa.me/212694011080?text=Ol%C3%A1!%20Vim%20pelo%20site." target="_blank" class="wa-btn">
+              <span class="wa-flag">🇲🇦</span>
+              <div>
+                <strong data-pt="WhatsApp Marrocos" data-en="Morocco WhatsApp">WhatsApp Marrocos</strong>
+                <small>+212 694-011080 — Suporte local no destino</small>
+              </div>
+            </a>
+          </div>
+
+          <div class="contact-extras">
+            <span>✉️ aistravelmarrocos@gmail.com</span>
+            <span>📸 @ais_travelmarrocos</span>
+            <span data-pt="📍 São Paulo/SP — Atendimento presencial mediante agendamento" data-en="📍 São Paulo/SP — In-person by appointment only">📍 São Paulo/SP — Atendimento presencial mediante agendamento</span>
+            <span>⏱ Segunda a Sábado, das 8h às 18h</span>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm">
+          <h3 class="form-heading" data-pt="Solicitar Cotação ou Informações" data-en="Request Quote or Info">Solicitar Cotação ou Informações</h3>
+
+          <div class="f-group">
+            <label for="name" data-pt="Nome completo" data-en="Full name">Nome completo</label>
+            <input type="text" id="name" name="name" required placeholder="Seu nome" />
+          </div>
+
+          <div class="f-row">
+            <div class="f-group">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" required placeholder="voce@email.com" />
+            </div>
+            <div class="f-group">
+              <label for="phone" data-pt="WhatsApp / Telefone" data-en="WhatsApp / Phone">WhatsApp / Telefone</label>
+              <input type="tel" id="phone" name="phone" required placeholder="+55 (11) 99900-1417" />
+            </div>
+          </div>
+
+          <div class="f-row">
+            <div class="f-group">
+              <label for="type" data-pt="Você é" data-en="You are">Você é</label>
+              <select id="type" name="type">
+                <option value="viajante" data-pt="Viajante / Grupo" data-en="Traveler / Group">Viajante / Grupo</option>
+                <option value="agencia" data-pt="Agência / Operadora (B2B)" data-en="Agency / Operator (B2B)">Agência / Operadora (B2B)</option>
+              </select>
+            </div>
+            <div class="f-group">
+              <label for="interest" data-pt="Interesse" data-en="Interest">Interesse</label>
+              <select id="interest" name="interest">
+                <option value="receptivo" data-pt="Receptivo Terrestre" data-en="Ground Receptive">Receptivo Terrestre</option>
+                <option value="roteiro" data-pt="Roteiro Personalizado" data-en="Custom Itinerary">Roteiro Personalizado</option>
+                <option value="saara" data-pt="Saara / Excursão" data-en="Sahara / Excursion">Saara / Excursão</option>
+                <option value="transfer" data-pt="Transfer Aeroportuário" data-en="Airport Transfer">Transfer Aeroportuário</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="f-group">
+            <label for="message" data-pt="Mensagem" data-en="Message">Mensagem</label>
+            <textarea id="message" name="message" placeholder="Conte-nos sobre sua viagem..." rows="4"></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit" data-pt="Enviar Mensagem →" data-en="Send Message →">Enviar Mensagem →</button>
+          <div class="form-success" id="formSuccess" data-pt="Mensagem enviada! Retornaremos em breve." data-en="Message sent! We'll get back to you soon.">Mensagem enviada! Retornaremos em breve.</div>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== FOOTER =================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#home" class="brand-logo">
+            <div class="logo-text">
+              <span class="logo-main" style="color:#fff">AIS Travel</span>
+              <span class="logo-sub">Marrocos</span>
+            </div>
+          </a>
+          <p class="footer-tagline" data-pt="Receptivo terrestre e operação DMC no Marrocos. Planejamento no Brasil, execução local." data-en="Ground reception and DMC operation in Morocco. Planning in Brazil, local execution.">
+            Receptivo terrestre e operação DMC no Marrocos. Planejamento no Brasil, execução local.
+          </p>
+          <div class="cadastur-tag">
+            <span>CNPJ: 59.106.210/0001-01</span>
+            <span>CADASTUR: Em regularização</span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-pt="Navegação" data-en="Navigation">Navegação</h4>
+          <a href="#sobre" data-pt="Sobre a AIS" data-en="About">Sobre a AIS</a>
+          <a href="#dmc" data-pt="Atuação DMC" data-en="DMC Services">Atuação DMC</a>
+          <a href="#destinos" data-pt="Destinos" data-en="Destinations">Destinos</a>
+          <a href="#saara" data-pt="Saara" data-en="Sahara">Saara</a>
+          <a href="#b2b" data-pt="Para Agências" data-en="For Agencies">Para Agências</a>
+          <a href="#contato" data-pt="Contato" data-en="Contact">Contato</a>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-pt="Contatos" data-en="Contacts">Contatos</h4>
+          <p>🇧🇷 +55 11 99900-1417</p>
+          <p>🇲🇦 +212 694-011080</p>
+          <p>aistravelmarrocos@gmail.com</p>
+          <p>@ais_travelmarrocos</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 AIS TRAVELMARROCOS LTDA. Todos os direitos reservados.</span>
+        <span data-pt="São Paulo/SP — Atendimento presencial mediante agendamento prévio" data-en="São Paulo/SP — In-person by appointment only">São Paulo/SP — Atendimento presencial mediante agendamento prévio</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <div class="wa-float">
+    <div class="wa-float-menu" id="waMenu">
+      <a href="https://wa.me/5511999001417?text=Ol%C3%A1!%20Vim%20pelo%20site." target="_blank" class="wa-float-item">
+        <span class="dot">🇧🇷</span> <span>Brasil — +55 11 99900-1417</span>
+      </a>
+      <a href="https://wa.me/212694011080?text=Ol%C3%A1!%20Vim%20pelo%20site." target="_blank" class="wa-float-item">
+        <span class="dot">🇲🇦</span> <span>Marrocos — +212 694-011080</span>
+      </a>
+    </div>
+    <button class="wa-float-btn" id="waBtnToggle" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" fill="white" width="26" height="26"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    </button>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

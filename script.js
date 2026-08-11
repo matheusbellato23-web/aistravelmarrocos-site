@@ -142,6 +142,44 @@ function initMobileMenu() {
   });
 }
 
+// ── SMOOTH SCROLL REVEAL ──────────────────────
+function initScrollReveal() {
+  const elements = document.querySelectorAll('.section, .dest-card, .g, .dmc-card, .b2b-block, .about-photos, .about-text');
+  elements.forEach(el => el.classList.add('reveal'));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+  elements.forEach(el => observer.observe(el));
+}
+
+// ── SMOOTH ANCHOR CLICK NAV ───────────────────
+function initSmoothLinks() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (!targetId || targetId === '#') return;
+      const targetEl = document.querySelector(targetId);
+      if (targetEl) {
+        e.preventDefault();
+        const headerOffset = 76;
+        const elementPosition = targetEl.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+}
+
 // ── INIT ──────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   initSlider();
@@ -150,5 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initForm();
   initActiveNav();
   initMobileMenu();
+  initScrollReveal();
+  initSmoothLinks();
   setLang('pt'); // default language
 });
