@@ -986,22 +986,23 @@ a { text-decoration: none; }
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-auto-rows: 200px;
-  gap: 12px;
+  grid-auto-flow: dense;
+  gap: 14px;
   margin-top: 40px;
 }
 
 .gallery-grid .g {
   position: relative;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
   background: var(--gray-light);
 }
 
 .gallery-grid .g:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 14px 40px rgba(0,0,0,0.16);
+  transform: translateY(-4px);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.18);
 }
 
 .gallery-grid .g img {
@@ -1016,20 +1017,25 @@ a { text-decoration: none; }
   transform: scale(1.06);
 }
 
-/* ── ROW 1: Dunas(wide) | Chefchaouen(tall) | Fez(tall) ── */
-.gallery-grid .g:nth-child(1) { grid-column: span 6; grid-row: span 2; } /* landscape — dunas pôr do sol */
-.gallery-grid .g:nth-child(2) { grid-column: span 3; grid-row: span 2; } /* portrait — viela azul */
-.gallery-grid .g:nth-child(3) { grid-column: span 3; grid-row: span 2; } /* portrait — madrasa fez */
+/* ── ROW 1: 6 + 3 + 3 = 12 ── */
+.gallery-grid .g:nth-child(1) { grid-column: span 6; grid-row: span 2; }
+.gallery-grid .g:nth-child(2) { grid-column: span 3; grid-row: span 2; }
+.gallery-grid .g:nth-child(3) { grid-column: span 3; grid-row: span 2; }
 
-/* ── ROW 2: Balões(wide) | Gruta(tall) | Essaouira porto(wide) ── */
-.gallery-grid .g:nth-child(4) { grid-column: span 5; grid-row: span 2; } /* landscape — balões */
-.gallery-grid .g:nth-child(5) { grid-column: span 3; grid-row: span 2; } /* portrait — gruta hércules */
-.gallery-grid .g:nth-child(6) { grid-column: span 4; grid-row: span 2; } /* landscape — porto essaouira */
+/* ── ROW 2: 4 + 4 + 4 = 12 ── */
+.gallery-grid .g:nth-child(4) { grid-column: span 4; grid-row: span 2; }
+.gallery-grid .g:nth-child(5) { grid-column: span 4; grid-row: span 2; }
+.gallery-grid .g:nth-child(6) { grid-column: span 4; grid-row: span 2; }
 
-/* ── ROW 3: Jantar acampamento(tall) | Pôr do sol(wide) | Casablanca(tall) ── */
-.gallery-grid .g:nth-child(7) { grid-column: span 3; grid-row: span 2; } /* portrait — jantar berbere */
-.gallery-grid .g:nth-child(8) { grid-column: span 6; grid-row: span 2; } /* landscape — pôr do sol atlântico */
-.gallery-grid .g:nth-child(9) { grid-column: span 3; grid-row: span 2; } /* portrait — casablanca */
+/* ── ROW 3: 3 + 6 + 3 = 12 ── */
+.gallery-grid .g:nth-child(7) { grid-column: span 3; grid-row: span 2; }
+.gallery-grid .g:nth-child(8) { grid-column: span 6; grid-row: span 2; }
+.gallery-grid .g:nth-child(9) { grid-column: span 3; grid-row: span 2; }
+
+/* ── ROW 4: 4 + 4 + 4 = 12 ── */
+.gallery-grid .g:nth-child(10) { grid-column: span 4; grid-row: span 2; }
+.gallery-grid .g:nth-child(11) { grid-column: span 4; grid-row: span 2; }
+.gallery-grid .g:nth-child(12) { grid-column: span 4; grid-row: span 2; }
 
 /* Hover overlay shimmer */
 .gallery-grid .g::after {
@@ -1619,14 +1625,21 @@ a.contact-extra-item:hover {
 
   /* ── GALLERY ── */
   .gallery-grid {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-    gap: 6px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 190px;
+    gap: 10px;
   }
 
-  .gallery-grid .g { height: 150px; }
+  .gallery-grid .g {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
+    height: 100%;
+  }
+
   .gallery-grid .g:nth-child(1),
-  .gallery-grid .g:nth-child(4) { grid-column: span 1; }
+  .gallery-grid .g:nth-child(8) {
+    grid-column: span 2 !important;
+  }
 
   /* ── CONTACT ── */
   .contact-grid { gap: 36px; }
