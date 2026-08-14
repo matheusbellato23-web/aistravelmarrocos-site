@@ -1,8 +1,13 @@
 {
-  "name": "sitetest",
+  "name": "aistravelmarrocos",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "node -e \"const fs=require('fs'); fs.mkdirSync('dist',{recursive:true}); ['index.html','style.css','script.js','favicon.svg'].forEach(f=>{if(fs.existsSync(f))fs.copyFileSync(f,'dist/'+f)}); if(fs.existsSync('images_site'))fs.cpSync('images_site','dist/images_site',{recursive:true});\""
+    "build": "node -e \"const fs=require('fs'); fs.mkdirSync('dist',{recursive:true}); ['index.html','style.css','script.js','favicon.svg','send-email.php','server.js'].forEach(f=>{if(fs.existsSync(f))fs.copyFileSync(f,'dist/'+f)}); if(fs.existsSync('images_site'))fs.cpSync('images_site','dist/images_site',{recursive:true});\"",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "nodemailer": "^6.9.13"
   }
 }

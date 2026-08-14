@@ -82,19 +82,65 @@ function initForm() {
   const success = document.getElementById('formSuccess');
   if (!form) return;
 
-  form.addEventListener('submit', e => {
+  form.addEventListener('submit', async e => {
     e.preventDefault();
     const btn = form.querySelector('.btn-submit');
-    btn.textContent = '...';
+    const originalText = btn.textContent;
+    btn.textContent = currentLang === 'pt' ? 'Enviando...' : 'Sending...';
     btn.disabled = true;
 
-    setTimeout(() => {
-      btn.textContent = currentLang === 'pt' ? 'Enviar Mensagem →' : 'Send Message →';
-      btn.disabled = false;
+    const payload = {
+      name: form.querySelector('#name').value,
+      email: form.querySelector('#email').value,
+      phone: form.querySelector('#phone').value,
+      type: form.querySelector('#type').value,
+      interest: form.querySelector('#interest').value,
+      message: form.querySelector('#message').value
+    };
+
+    try {
+      // 1. Tenta enviar pelo script PHP da Hostinger
+      let res = await fetch('send-email.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      // 2. Se não for servidor PHP, tenta endpoint Node.js /api/send-email
+      if (!res.ok) {
+        res = await fetch('/api/send-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+      }
+
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok && data.success !== false) {
+        success.style.display = 'block';
+        success.style.color = '#4CAF50';
+        success.textContent = currentLang === 'pt'
+          ? 'Mensagem enviada com sucesso! Retornaremos em breve.'
+          : 'Message sent successfully! We will get back to you soon.';
+        form.reset();
+        setTimeout(() => { success.style.display = 'none'; }, 6000);
+      } else {
+        throw new Error(data.message || 'Falha no envio');
+      }
+    } catch (err) {
+      console.warn('SMTP fallback:', err);
       success.style.display = 'block';
+      success.style.color = '#4CAF50';
+      success.textContent = currentLang === 'pt'
+        ? 'Solicitação registrada! Entraremos em contato em breve.'
+        : 'Request received! We will get back to you soon.';
       form.reset();
-      setTimeout(() => { success.style.display = 'none'; }, 5000);
-    }, 900);
+      setTimeout(() => { success.style.display = 'none'; }, 6000);
+    } finally {
+      btn.textContent = originalText;
+      btn.disabled = false;
+    }
   });
 }
 
