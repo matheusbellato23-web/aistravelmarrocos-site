@@ -159,11 +159,11 @@
         <span class="strip-number">+212 694-011080</span>
       </div>
     </a>
-    <a href="mailto:aistravelmarrocos@gmail.com" class="contact-strip-link">
+    <a href="mailto:aistravelmarrocos@aistravelmarrocos.com.br" class="contact-strip-link">
       <span class="strip-flag">✉️</span>
       <div>
         <span class="strip-label">E-mail</span>
-        <span class="strip-number">aistravelmarrocos@gmail.com</span>
+        <span class="strip-number">aistravelmarrocos@aistravelmarrocos.com.br</span>
       </div>
     </a>
   </div>
@@ -449,19 +449,45 @@
         <h2 class="section-title" data-pt="Marrocos em imagens reais" data-en="Morocco in real images">Marrocos em imagens reais</h2>
       </div>
 
-      <div class="gallery-grid">
-        <div class="g"><img src="images_site/gal_01_desert_sunset.jpg" alt="Dunas do Saara ao pôr do sol" style="object-position: center 60%;" /></div>
-        <div class="g"><img src="images_site/gal_07_chefchaouen_alley.jpg" alt="Viela azul, Chefchaouen" style="object-position: center 30%;" /></div>
-        <div class="g"><img src="images_site/gal_03_fez_madrasa.jpg" alt="Madrasa Bou Inania, Fez" style="object-position: center 20%;" /></div>
-        <div class="g"><img src="images_site/gal_04_balloon_dawn.jpg" alt="Balões ao amanhecer, Marrocos" style="object-position: center 40%;" /></div>
-        <div class="g"><img src="images_site/gal_02_tanger_cave.jpg" alt="Gruta de Hércules, Tânger" style="object-position: center center;" /></div>
-        <div class="g"><img src="images_site/gal_05_essaouira_port.jpg" alt="Porto de Essaouira" style="object-position: center 50%;" /></div>
-        <div class="g"><img src="images_site/gal_08_desert_dinner.jpg" alt="Jantar no acampamento berbere" style="object-position: center 40%;" /></div>
-        <div class="g"><img src="images_site/gal_12_fez_tannery.jpg" alt="Curtumes seculares de Fez" style="object-position: center 40%;" /></div>
-        <div class="g"><img src="images_site/gal_09_casablanca_arch.jpg" alt="Arquitetura histórica, Casablanca" style="object-position: center 30%;" /></div>
-        <div class="g"><img src="images_site/gal_11_desert_ripples.jpg" alt="Ondulações de areia no deserto do Saara" style="object-position: center 50%;" /></div>
-        <div class="g"><img src="images_site/gal_06_essaouira_sunset.jpg" alt="Pôr do sol Atlântico, Essaouira" style="object-position: center 50%;" /></div>
-        <div class="g"><img src="images_site/hero_chefchaouen_streets.jpg" alt="Vielas da Cidade Azul" style="object-position: center 30%;" /></div>
+      <div class="gallery-filters">
+        <button class="filter-btn active" data-filter="all" data-pt="Todas" data-en="All">Todas</button>
+        <button class="filter-btn" data-filter="saara" data-pt="Saara & Deserto" data-en="Sahara & Desert">Saara & Deserto</button>
+        <button class="filter-btn" data-filter="imperiais" data-pt="Cidades Imperiais" data-en="Imperial Cities">Cidades Imperiais</button>
+        <button class="filter-btn" data-filter="litoral" data-pt="Litoral & Costa" data-en="Coast & Beaches">Litoral & Costa</button>
+        <button class="filter-btn" data-filter="experiencias" data-pt="Experiências" data-en="Experiences">Experiências</button>
+      </div>
+
+      <div class="gallery-grid" id="galleryGrid">
+        <div class="g" data-cat="saara"><img src="images_site/gal_01_desert_sunset.jpg" alt="Dunas do Saara ao pôr do sol" style="object-position: center 60%;" /></div>
+        <div class="g" data-cat="imperiais"><img src="images_site/gal_07_chefchaouen_alley.jpg" alt="Viela azul, Chefchaouen" style="object-position: center 30%;" /></div>
+        <div class="g" data-cat="imperiais"><img src="images_site/gal_03_fez_madrasa.jpg" alt="Madrasa Bou Inania, Fez" style="object-position: center 20%;" /></div>
+        <div class="g" data-cat="experiencias"><img src="images_site/gal_04_balloon_dawn.jpg" alt="Balões ao amanhecer, Marrocos" style="object-position: center 40%;" /></div>
+        <div class="g" data-cat="litoral"><img src="images_site/gal_02_tanger_cave.jpg" alt="Gruta de Hércules, Tânger" style="object-position: center center;" /></div>
+        <div class="g" data-cat="litoral"><img src="images_site/gal_05_essaouira_port.jpg" alt="Porto de Essaouira" style="object-position: center 50%;" /></div>
+        <div class="g" data-cat="saara"><img src="images_site/gal_08_desert_dinner.jpg" alt="Jantar no acampamento berbere" style="object-position: center 40%;" /></div>
+        <div class="g" data-cat="imperiais"><img src="images_site/gal_12_fez_tannery.jpg" alt="Curtumes seculares de Fez" style="object-position: center 40%;" /></div>
+        <div class="g" data-cat="imperiais"><img src="images_site/gal_09_casablanca_arch.jpg" alt="Arquitetura histórica, Casablanca" style="object-position: center 30%;" /></div>
+
+        <!-- Fotos adicionais expansíveis -->
+        <div class="g g-extra" data-cat="saara"><img src="images_site/gal_11_desert_ripples.jpg" alt="Ondulações de areia no deserto do Saara" style="object-position: center 50%;" /></div>
+        <div class="g g-extra" data-cat="litoral"><img src="images_site/gal_06_essaouira_sunset.jpg" alt="Pôr do sol Atlântico, Essaouira" style="object-position: center 50%;" /></div>
+        <div class="g g-extra" data-cat="imperiais"><img src="images_site/hero_chefchaouen_streets.jpg" alt="Vielas floridas da Cidade Azul" style="object-position: center 30%;" /></div>
+        <div class="g g-extra" data-cat="experiencias"><img src="images_site/gal_13_balao_overview.jpg" alt="Voo panorâmico de balão ao amanhecer" style="object-position: center 40%;" /></div>
+        <div class="g g-extra" data-cat="imperiais"><img src="images_site/gal_14_rabat_mausoleum.jpg" alt="Mausoléu de Mohammed V, Rabat" style="object-position: center 40%;" /></div>
+        <div class="g g-extra" data-cat="litoral"><img src="images_site/gal_15_tanger_kasbah.jpg" alt="Kasbah de Tânger com vista marítima" style="object-position: center 40%;" /></div>
+        <div class="g g-extra" data-cat="imperiais"><img src="images_site/gal_16_chefchaouen_stairs.jpg" alt="Escadarias artesanais de Chefchaouen" style="object-position: center 30%;" /></div>
+        <div class="g g-extra" data-cat="saara"><img src="images_site/gal_17_desert_luxury_camp.jpg" alt="Acampamento de luxo no Saara" style="object-position: center 40%;" /></div>
+        <div class="g g-extra" data-cat="litoral"><img src="images_site/gal_18_essaouira_ramparts.jpg" alt="Muralhas históricas de Essaouira" style="object-position: center 50%;" /></div>
+        <div class="g g-extra" data-cat="imperiais"><img src="images_site/gal_19_casablanca_mosque_inside.jpg" alt="Detalhes da Mesquita Hassan II, Casablanca" style="object-position: center 40%;" /></div>
+        <div class="g g-extra" data-cat="saara"><img src="images_site/gal_20_desert_camel_caravan.jpg" alt="Caravana de dromedários nas dunas" style="object-position: center 40%;" /></div>
+      </div>
+
+      <!-- Botão Expansor -->
+      <div class="gallery-more-wrap">
+        <button class="btn-gallery-toggle" id="btnExpandGallery">
+          <span data-pt="Ver Galeria Completa (+10 Fotos)" data-en="View Full Gallery (+10 Photos)">Ver Galeria Completa (+10 Fotos)</span>
+          <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
       </div>
     </div>
   </section>
@@ -496,9 +522,9 @@
           </div>
 
           <div class="contact-extras">
-            <a href="mailto:aistravelmarrocos@gmail.com" class="contact-extra-item">
+            <a href="mailto:aistravelmarrocos@aistravelmarrocos.com.br" class="contact-extra-item">
               <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-              <span>aistravelmarrocos@gmail.com</span>
+              <span>aistravelmarrocos@aistravelmarrocos.com.br</span>
             </a>
             <a href="https://instagram.com/ais_travelmarrocos" target="_blank" rel="noopener" class="contact-extra-item">
               <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
@@ -600,7 +626,7 @@
           <h4 data-pt="Contatos" data-en="Contacts">Contatos</h4>
           <p><a href="https://wa.me/5511999001417?text=Ol%C3%A1!%20Vim%20pelo%20site." target="_blank" rel="noopener">🇧🇷 +55 11 99900-1417</a></p>
           <p><a href="https://wa.me/212694011080?text=Ol%C3%A1!%20Vim%20pelo%20site." target="_blank" rel="noopener">🇲🇦 +212 694-011080</a></p>
-          <p><a href="mailto:aistravelmarrocos@gmail.com">aistravelmarrocos@gmail.com</a></p>
+          <p><a href="mailto:aistravelmarrocos@aistravelmarrocos.com.br">aistravelmarrocos@aistravelmarrocos.com.br</a></p>
           <p><a href="https://instagram.com/ais_travelmarrocos" target="_blank" rel="noopener">@ais_travelmarrocos</a></p>
         </div>
       </div>
