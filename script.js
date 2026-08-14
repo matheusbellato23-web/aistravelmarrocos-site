@@ -245,9 +245,9 @@ function initGalleryFeatures() {
           span.setAttribute('data-en', 'Show Fewer Photos');
           span.textContent = currentLang === 'pt' ? 'Mostrar Menos Fotos' : 'Show Fewer Photos';
         } else {
-          span.setAttribute('data-pt', 'Ver Galeria Completa (+10 Fotos)');
-          span.setAttribute('data-en', 'View Full Gallery (+10 Photos)');
-          span.textContent = currentLang === 'pt' ? 'Ver Galeria Completa (+10 Fotos)' : 'View Full Gallery (+10 Photos)';
+          span.setAttribute('data-pt', 'Ver Galeria Completa (+26 Fotos)');
+          span.setAttribute('data-en', 'View Full Gallery (+26 Photos)');
+          span.textContent = currentLang === 'pt' ? 'Ver Galeria Completa (+26 Fotos)' : 'View Full Gallery (+26 Photos)';
         }
       }
     });
